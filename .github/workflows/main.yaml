@@ -28,6 +28,10 @@ jobs:
     name: 'build & test'
     runs-on: 'ubuntu-latest'
     steps:
+    # actions를 사용하기 위한 필수적인 코드 다운받기
+    - name: Checkout codes
+      uses: actions/checkout@v3
+
     - name: Send a message to Webex Space
       shell: bash
       run: |
