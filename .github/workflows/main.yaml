@@ -30,6 +30,7 @@ jobs:
     strategy:
       matrix:
         os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        nodejs: ['16', '18']
 
     runs-on: ${{ matrix.os }}
     # runs-on: ubuntu-latest
@@ -48,6 +49,7 @@ jobs:
       #   STEP_LEVEL_1: 'STEP LEVEL VALUE 1'
       run: |
         echo "OS: ${{ matrix.os }}"
+        echo "OS: ${{ matrix.nodejs }}"
       # run: |
       #   echo "Hello World from step 1"
       #   randomValue="swm$(echo $RANDOM)"
