@@ -28,51 +28,59 @@ jobs:
     name: 'build & test'
     runs-on: 'ubuntu-latest'
     steps:
-    - name: Say Hello World 1
+    - name: Send a message to Webex Space
       shell: bash
       run: |
         echo "Hello World"
-  deploy-dev:
-    name: 'Deploy to Dev'
-    needs:
-      - build-test
-    runs-on: 'ubuntu-latest'
-    steps:
-    - name: Say Hello World 1
-      shell: bash
-      run: |
-        echo "Hello World"
-  deploy-staging-1:
-    name: 'Deploy to Staging'
-    needs:
-      - deploy-dev
-    runs-on: 'ubuntu-latest'
-    steps:
-    - name: Say Hello World 1
-      shell: bash
-      run: |
-        echo "Hello World"
-  deploy-staging-2:
-    name: 'Deploy to Staging'
-    needs:
-      - deploy-dev
-    runs-on: 'ubuntu-latest'
-    steps:
-    - name: Say Hello World 1
-      shell: bash
-      run: |
-        echo "Hello World"
-  deploy-prod:
-    name: 'Deploy to Production'
-    needs:
-      - deploy-staging-1
-      - deploy-staging-2
-    runs-on: 'ubuntu-latest'
-    steps:
-    - name: Say Hello World 1
-      shell: bash
-      run: |
-        echo "Hello World"
+        curl -X POST https://webexapis.com/v1/messages \
+          -H "Authorization: Bearer ${{ secrets.WEBEX_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d "{
+            "roomId": "${{ secrets.WEBEX_ROOM_ID }}",
+            "text": "메시지입니다. - FROM GitHub Actions"
+          }" 
+
+#   deploy-dev:
+#     name: 'Deploy to Dev'
+#     needs:
+#       - build-test
+#     runs-on: 'ubuntu-latest'
+#     steps:
+#     - name: Say Hello World 1
+#       shell: bash
+#       run: |
+#         echo "Hello World"
+#   deploy-staging-1:
+#     name: 'Deploy to Staging'
+#     needs:
+#       - deploy-dev
+#     runs-on: 'ubuntu-latest'
+#     steps:
+#     - name: Say Hello World 1
+#       shell: bash
+#       run: |
+#         echo "Hello World"
+#   deploy-staging-2:
+#     name: 'Deploy to Staging'
+#     needs:
+#       - deploy-dev
+#     runs-on: 'ubuntu-latest'
+#     steps:
+#     - name: Say Hello World 1
+#       shell: bash
+#       run: |
+#         echo "Hello World"
+#   deploy-prod:
+#     name: 'Deploy to Production'
+#     needs:
+#       - deploy-staging-1
+#       - deploy-staging-2
+#     runs-on: 'ubuntu-latest'
+#     steps:
+#     - name: Say Hello World 1
+#       shell: bash
+#       run: |
+#         echo "Hello World"
 
   # first-job:
   #   name: 'First Job'
@@ -217,3 +225,7 @@ jobs:
 # 
 
 # 특정 OS 또는 버전에서만 특정 패키지가 필요한 경우
+#
+
+# 순서대로 배포해야 하는 경우
+# 
