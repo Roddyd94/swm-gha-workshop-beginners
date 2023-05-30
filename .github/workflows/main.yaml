@@ -64,7 +64,7 @@ jobs:
       #   STEP_LEVEL_2: 'STEP LEVEL VALUE 2'
       run: |
         echo "Hello World from step 2"
-        echo "STEP_VALUE: ${{ env.helloworld1.outputs.STEP_VALUE }}"
+        echo "STEP_VALUE: ${{ steps.helloworld1.outputs.STEP_VALUE }}"
       # run: |
       #   echo "Hello World from step 2"
       #   echo "STEP_VALUE: ${{ env.STEP_VALUE }}"
@@ -124,9 +124,10 @@ jobs:
 # echo "${{ env.ENV_VARIABLE_NAME }}"
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
-# echo "STEP_VALUE=$randomValue" >> $GITHUB_ENV
+# echo "ENV_VARIABLE_NAME=$randomValue" >> $GITHUB_ENV
 
 # 변수 지정
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
-# echo "STEP_VALUE=$randomValue" >> $GITHUB_OUTPUT
+# echo "VARIABLE_NAME=$randomValue" >> $GITHUB_OUTPUT
+# echo "${{ steps.stepIdName.outputs.VARIABLE_NAME }}"
