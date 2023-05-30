@@ -34,7 +34,7 @@ jobs:
     - name: Say Hello World 2
       shell: bash
       run: |
-        echo "Hello World from step 1"
+        echo "Hello World from step 2"
 
   second-job:
     name: 'Second Job'
@@ -50,4 +50,4 @@ jobs:
     - name: Say Hello World 2
       shell: bash
       run: |
-        echo "Hello World from step 1"
+        echo "Hello World from step 2"
