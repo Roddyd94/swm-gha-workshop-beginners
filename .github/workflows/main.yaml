@@ -1,0 +1,53 @@
+name: 'SWM GitHub Actions Basic'
+
+# Actions가 동작할 트리거
+on: 'push'
+# Actions가 동작할 트리거 목록
+# on: ['push', 'pull_request', 'issues']
+# Actions가 동작할 트리거 dictionary
+# on:
+#   push:
+#     branches:
+#       - main
+#       - 'feature/*'
+#     paths:
+#       - 'src/*'
+#       - 'test/*'
+#   pull_request:
+#     branches:
+#       - main
+
+# 트리거에 따른 동작
+# dictionary로 작성 시 무엇이 먼저 실행 될지 알지 못 함
+jobs:
+  first-job:
+    name: 'First Job'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Say Hello World 1
+      shell: bash
+      run: |
+        echo "Hello World from step 1"
+        
+    - name: Say Hello World 2
+      shell: bash
+      run: |
+        echo "Hello World from step 1"
+
+  second-job:
+    name: 'Second Job'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Say Hello World 1
+      shell: bash
+      run: |
+        echo "Hello World from step 1"
+
+    - name: Say Hello World 2
+      shell: bash
+      run: |
+        echo "Hello World from step 1"
