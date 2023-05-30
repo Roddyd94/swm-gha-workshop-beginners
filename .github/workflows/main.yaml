@@ -70,7 +70,8 @@ jobs:
       #   echo "STEP 4: ${{ env.STEP_LEVEL_4 }}"
         
     - name: Say Hello World 2 - ${{ matrix.os }}
-      if: matrix.os == 'windows-latest'
+      if: matrix.os == 'windows-latest' && matrix.nodejs == '16'
+      # if: matrix.os == 'windows-latest'
       shell: bash
       run: |
         echo "OS: ${{ matrix.os }}"
