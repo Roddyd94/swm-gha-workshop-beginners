@@ -69,6 +69,12 @@ jobs:
       #   echo "STEP 3: ${{ env.STEP_LEVEL_3 }}"
       #   echo "STEP 4: ${{ env.STEP_LEVEL_4 }}"
         
+    - name: Say Hello World 2 - ${{ matrix.os }}
+      if: matrix.os == 'windows-latest'
+      shell: bash
+      run: |
+        echo "OS: ${{ matrix.os }}"
+        echo "nodejs version: ${{ matrix.nodejs }}"
     # - name: Say Hello World 2
       # shell: pwsh
       # env:
@@ -155,3 +161,6 @@ jobs:
 
 # 서로 다른 OS에 빌드하는 상황
 # 또는 서로 다른 버전에 패키징하는 상황
+# 
+
+# 특정 OS 또는 버전에서만 특정 패키지가 필요한 경우
