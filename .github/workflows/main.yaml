@@ -66,6 +66,7 @@ jobs:
       run: |
         echo "Hello World from step 2"
         echo "STEP_VALUE: ${{ steps.helloworld1.outputs.STEP_VALUE }}"
+        echo "API_KEY: ${{ secrets.API_KEY }}"
       # run: |
       #   echo "Hello World from step 2"
       #   echo "STEP_VALUE: ${{ env.STEP_VALUE }}"
@@ -125,13 +126,19 @@ jobs:
 # echo "${{ env.ENV_VARIABLE_NAME }}"
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
-# echo "ENV_VARIABLE_NAME=$randomValue" >> $GITHUB_ENV
+# variableName="swm$(echo $RANDOM)"
+# echo "ENV_VARIABLE_NAME=$variableName" >> $GITHUB_ENV
 
 # 변수 지정
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
-# echo "VARIABLE_NAME=$randomValue" >> $GITHUB_OUTPUT
+# variableName="swm$(echo $RANDOM)"
+# echo "VARIABLE_NAME=$variableName" >> $GITHUB_OUTPUT
 # echo "${{ steps.stepIdName.outputs.VARIABLE_NAME }}"
 
 # 민감 정보 마스킹
-# 
+# echo "::add-mask::$variableName"
+
+# repository secret 변수
+# setting > Security> "Secrets and variables" > Actions
+# echo "${{ secrets.ENV_NAME }}""
