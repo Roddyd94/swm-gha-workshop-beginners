@@ -45,10 +45,13 @@ jobs:
         WEBEX_TOKEN: ${{ secrets.WEBEX_TOKEN }}
         WEBEX_ROOM_ID: ${{ secrets.WEBEX_ROOM_ID }}
         MARKDOWN_MESSAGE: "**Hello, world! You just ran an action from ${{ github.repository }}.**"
-        
-      # run: |
-      #   echo "Hello World"
-
+    - name: Send message from custom action to Webex
+      uses: .github/actions@main
+      with:
+        webexToken: ${{ secrets.WEBEX_TOKEN }}
+        webexRoomId: ${{ secrets.WEBEX_ROOM_ID }}
+        bodyText: "메시지입니다. - FROM GitHub Actions"
+        bodyMarkdown: "**Hello, world! You just ran an action from ${{ github.repository }}.**"
 #   deploy-dev:
 #     name: 'Deploy to Dev'
 #     needs:
@@ -244,3 +247,9 @@ jobs:
 
 # marketplace에서 가져다 쓰기
 # 
+
+# marketplace에 Action 만들어 올리기
+# docker 컨테이너로 만들기
+# JS로 만들기
+# skills.github.com
+# hello-github-actions
