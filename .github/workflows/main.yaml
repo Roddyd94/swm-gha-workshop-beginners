@@ -125,6 +125,8 @@ jobs:
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
 # echo "STEP_VALUE=$randomValue" >> $GITHUB_ENV
+
+# 변수 지정
 # github Actions의 문법
 # ENV 변수 동적 할당, Job-level Scope
-# echo "STEP_VALUE=$randomValue" >> $GITHUB_ENV
+# echo "STEP_VALUE=$randomValue" >> $GITHUB_OUTPUT
