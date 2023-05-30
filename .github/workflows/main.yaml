@@ -39,6 +39,15 @@ jobs:
             "roomId": "${{ secrets.WEBEX_ROOM_ID }}",
             "text": "메시지입니다. - FROM GitHub Actions"
           }'
+    - name: Post Message to Webex Room
+      uses: chrivand/action-webex-js@main
+      env:
+        WEBEX_TOKEN: ${{ secrets.WEBEX_TOKEN }}
+        WEBEX_ROOM_ID: ${{ secrets.WEBEX_ROOM_ID }}
+        MARKDOWN_MESSAGE: "**Hello, world! You just ran an action from ${{ github.repository }}.**"
+        
+      # run: |
+      #   echo "Hello World"
 
 #   deploy-dev:
 #     name: 'Deploy to Dev'
@@ -228,4 +237,10 @@ jobs:
 #
 
 # 순서대로 배포해야 하는 경우
+# 
+
+# 메세지 봇 연동
+# 
+
+# marketplace에서 가져다 쓰기
 # 
