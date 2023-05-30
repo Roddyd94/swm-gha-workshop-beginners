@@ -43,6 +43,7 @@ jobs:
       run: |
         echo "Hello World from step 1"
         randomValue="swm$(echo $RANDOM)"
+        echo "::add-mask::$randomValue"
         echo "STEP_VALUE=$randomValue" >> $GITHUB_OUTPUT
       # run: |
       #   echo "Hello World from step 1"
@@ -131,3 +132,6 @@ jobs:
 # ENV 변수 동적 할당, Job-level Scope
 # echo "VARIABLE_NAME=$randomValue" >> $GITHUB_OUTPUT
 # echo "${{ steps.stepIdName.outputs.VARIABLE_NAME }}"
+
+# 민감 정보 마스킹
+# 
