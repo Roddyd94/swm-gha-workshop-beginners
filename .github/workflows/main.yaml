@@ -27,24 +27,32 @@ jobs:
   first-job:
     name: 'First Job'
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+
+    runs-on: ${{ matrix.os }}
+    # runs-on: ubuntu-latest
 
     # job level env
     # env:
     #   JOB_LEVEL_1: 'JOB LEVEL VALUE 1'
 
     steps:
-    - name: Say Hello World 1
-      id: helloworld1
+    - name: Say Hello World 1 - ${{ matrix.os }}
+    # - name: Say Hello World 1
+      # id: helloworld1
       shell: bash
       # step level env
       # env:
       #   STEP_LEVEL_1: 'STEP LEVEL VALUE 1'
       run: |
-        echo "Hello World from step 1"
-        randomValue="swm$(echo $RANDOM)"
-        echo "::add-mask::$randomValue"
-        echo "STEP_VALUE=$randomValue" >> $GITHUB_OUTPUT
+        echo "OS: ${{ matrix.os }}"
+      # run: |
+      #   echo "Hello World from step 1"
+      #   randomValue="swm$(echo $RANDOM)"
+      #   echo "::add-mask::$randomValue"
+      #   echo "STEP_VALUE=$randomValue" >> $GITHUB_OUTPUT
       # run: |
       #   echo "Hello World from step 1"
       #   randomValue="swm$(echo $RANDOM)"
@@ -59,14 +67,14 @@ jobs:
       #   echo "STEP 3: ${{ env.STEP_LEVEL_3 }}"
       #   echo "STEP 4: ${{ env.STEP_LEVEL_4 }}"
         
-    - name: Say Hello World 2
-      shell: pwsh
+    # - name: Say Hello World 2
+      # shell: pwsh
       # env:
       #   STEP_LEVEL_2: 'STEP LEVEL VALUE 2'
-      run: |
-        echo "Hello World from step 2"
-        echo "STEP_VALUE: ${{ steps.helloworld1.outputs.STEP_VALUE }}"
-        echo "API_KEY: ${{ secrets.API_KEY }}"
+      # run: |
+      #   echo "Hello World from step 2"
+      #   echo "STEP_VALUE: ${{ steps.helloworld1.outputs.STEP_VALUE }}"
+      #   echo "API_KEY: ${{ secrets.API_KEY }}"
       # run: |
       #   echo "Hello World from step 2"
       #   echo "STEP_VALUE: ${{ env.STEP_VALUE }}"
@@ -142,3 +150,6 @@ jobs:
 # repository secret 변수
 # setting > Security> "Secrets and variables" > Actions
 # echo "${{ secrets.ENV_NAME }}""
+
+# 서로 다른 OS에 빌드하는 상황
+# 또는 서로 다른 버전에 패키징하는 상황
